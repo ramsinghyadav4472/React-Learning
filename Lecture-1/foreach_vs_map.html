@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Props Demo</title>
+    <title>Document</title>
+    <title>Reusable Card</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,24 +15,39 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        const data = ["React", "Node", "MongoDB"]
+        const course = [
+            { id: 1, title: "Mern", desc: "Learning Mern" },
+            { id: 2, title: "React", desc: "Learning React" },
+            { id: 3, title: "Node", desc: "Learning Node" },
+            { id: 4, title: "MongoDB", desc: "Learning MongoDB" }
+        ]
+        function Card(props) {
+            return (
+                <div>
+                    <h1>{props.title}</h1>
+                    <p>{props.desc}</p>
+                </div>
+            );
+        }
+
         function App() {
             return (
                 <div>
-                    <h2>Using Map (work)</h2>
-                    {
-                        data.map((item, index) => {
-                            return <h1 key={index}>{item}</h1>
-                        })
-                    }
+                    <h2>Our Course</h2>
+                    {course.map((item) => (
+                        <Card
+                            key={item.id}
+                            title={item.title}
+                            desc={item.desc} />
+                    ))}
                 </div>
-            )
+            );
         }
-
-
         const root = ReactDOM.createRoot(document.getElementById("root"));
         root.render(<App />);
+
     </script>
+
 </body>
 
 </html>
