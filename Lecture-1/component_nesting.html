@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Nesting</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const cardData = [
+            { id: 1, title: "React", description: "A JavaScript library" },
+            { id: 2, title: "Node.js", description: "JavaScript runtime" },
+            { id: 3, title: "MongoDB", description: "database" },
+            { id: 4, title: "Express", description: "web framework" }
+        ];
+
+
+
+        function Header() {
+            return (
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", backgroundColor: "#f9f9f9", padding: "10px", borderRadius: "8px", boxShadow: "Aqua-white" }}>
+                    <div>
+                        <h1 style={{ textAlign: "left" }}>My App Header</h1>
+                    </div>
+                    <div style={{ display: "flex", gap: "20px" }}>
+                        <h2>Home</h2>
+                        <h2>About</h2>
+                        <h2>Contact</h2>
+                    </div>
+                </div>
+
+
+            )
+        }
+
+        function Card(props) {
+            return (
+                <div style={{
+                    border: "2px solid #4CAF50",
+                    padding: "15px",
+                    margin: "10px",
+                    borderRadius: "8px",
+                    backgroundColor: "#f9f9f9",
+                    boxShadow: "green"
+                }}>
+                    <h2 style={{ color: "#4CAF50" }}>{props.title}</h2>
+                    <p style={{ color: "#666" }}>{props.description}</p>
+                </div>
+            )
+        }
+
+        function Footer() {
+            return (
+                <h1 style={{ textAlign: "center", color: "#333", marginTop: "20px", backgroundColor: "#f9f9f9", padding: "10px" }}>My App Footer</h1>
+            )
+        }
+
+        function App() {
+            return (
+                <div style={{ maxWidth: "800px", margin: "0 auto", padding: "20px" }}>
+                    <Header />
+
+                    {cardData.map((item) => (
+                        <Card
+                            key={item.id}
+                            title={item.title}
+                            description={item.description}
+                        />
+                    ))}
+
+                    <Footer />
+                </div>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
+
+<!-- 
+===========================================
+Component Nesting Explanation (Line-by-Line)
+===========================================
+
+WHAT IS COMPONENT NESTING?
+--------------------------
+Component Nesting means using one component inside another component, just like nesting dolls (matryoshka).
+In this example, the App component contains (nests) Header, Card, and Footer components.
+
+(Component Nesting ka matlab hai ek component ke andar dusre component ko use karna, jaise Russian dolls ek ke andar ek hoti hain.
+Is example me, App component ke andar Header, Card, aur Footer components hain.)
+
+LINE-BY-LINE EXPLANATION:
+--------------------------
+
+Lines 1-11: HTML Setup
+- Standard HTML5 setup with React, ReactDOM, and Babel libraries loaded
+- (HTML5 setup React, ReactDOM, aur Babel libraries ke saath)
+
+Line 14: <div id="root"></div>
+- Empty container where our React app will be rendered
+- (Khali container jahan React app dikhega)
+
+Lines 16-20: Header Component
+function Header() {
+    return (
+        <h1>My App Header</h1>
+    )
+}
+- Creates a reusable Header component that returns an h1 element
+- This is a CHILD component that will be used inside App
+- (Ek reusable Header component banaya jo h1 element return karta hai)
+- (Ye ek CHILD component hai jo App ke andar use hoga)
+
+Lines 21-27: Card Component
+function Card() {
+    return (
+        <div>
+            <h1>This is ComponentCard</h1>
+        </div>
+    )
+}
+- Creates a Card component that displays content inside a div
+- This is also a CHILD component
+- (Ek Card component banaya jo div ke andar content dikhata hai)
+- (Ye bhi ek CHILD component hai)
+
+Lines 28-32: Footer Component
+function Footer() {
+    return (
+        <h1>My App Footer</h1>
+    )
+}
+- Creates a Footer component
+- Another CHILD component
+- (Ek Footer component banaya)
+- (Ek aur CHILD component)
+
+Lines 33-41: App Component (PARENT)
+function App() {
+    return (
+        <div>
+            <Header />
+            <Card />
+            <Footer />
+        </div>
+    )
+}
+- This is the PARENT component that NESTS the child components
+- It uses <Header />, <Card />, and <Footer /> inside it
+- The order matters: Header appears first, then Card, then Footer
+- All three components are wrapped in a parent <div> (React requires a single parent element)
+- (Ye PARENT component hai jo child components ko apne andar use karta hai)
+- (Ye <Header />, <Card />, aur <Footer /> ko apne andar use karta hai)
+- (Order matter karta hai: pehle Header, phir Card, phir Footer dikhega)
+- (Teeno components ek parent <div> me wrapped hain - React ko ek single parent element chahiye)
+
+Lines 42-43: Rendering
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
+- Creates a React root and renders the App component
+- When App renders, it automatically renders all its nested children (Header, Card, Footer)
+- (React root banaya aur App component ko render kiya)
+- (Jab App render hota hai, to automatically uske andar ke saare children bhi render hote hain)
+
+COMPONENT HIERARCHY (Tree Structure):
+--------------------------------------
+App (PARENT)
+├── Header (CHILD)
+├── Card (CHILD)
+└── Footer (CHILD)
+
+KEY CONCEPTS:
+-------------
+1. REUSABILITY: Each component (Header, Card, Footer) can be reused multiple times
+   (Har component ko multiple baar reuse kar sakte hain)
+
+2. COMPOSITION: Building complex UIs by combining simple components
+   (Simple components ko combine karke complex UI banate hain)
+
+3. SEPARATION OF CONCERNS: Each component has its own responsibility
+   (Har component ki apni responsibility hai)
+
+4. PARENT-CHILD RELATIONSHIP: App is the parent, others are children
+   (App parent hai, baaki sab children hain)
+
+REAL-WORLD ANALOGY:
+-------------------
+Think of a house (App):
+- Roof (Header)
+- Rooms (Card)
+- Foundation (Footer)
+
+Each part is separate but together they make a complete house!
+(Ghar ke parts alag hain lekin saath me ek complete ghar bante hain!)
+
+WHY USE COMPONENT NESTING?
+---------------------------
+✅ Code Organization: Keeps code clean and organized
+✅ Reusability: Use the same component multiple times
+✅ Maintainability: Easy to update one component without affecting others
+✅ Readability: Easy to understand the structure of your app
+
+(Code organized rehta hai, components reuse kar sakte hain, maintain karna easy hai, aur structure samajhna easy hai)
+-->
