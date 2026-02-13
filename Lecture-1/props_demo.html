@@ -1,0 +1,69 @@
+<!DOCTYPE html> <!-- Defines the document type as HTML5 (HTML 5 ka document declare karta hai) -->
+<html lang="en">
+<!-- Root element of the HTML page, language set to English (HTML page ka root element, bhasa English set ki gayi hai) -->
+
+<head> <!-- Container for metadata about the document (Metadata ke liye container) -->
+    <meta charset="UTF-8">
+    <!-- Sets character encoding to UTF-8 for special characters support (Character encoding UTF-8 set karta hai) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Ensures proper rendering and touch zooming on mobile devices (Mobile devices par sahi dikhne ke liye viewport set karta hai) -->
+    <title>Props Demo</title>
+    <!-- Sets the title of the web page shown in browser tab (Browser tab ka title set karta hai) -->
+
+    <!-- Loads React core library (React ki main library load karta hai) -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+
+    <!-- Loads React DOM library to interact with the DOM (DOM ke sath interact karne ke liye React DOM load karta hai) -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+    <!-- Loads Babel to compile JSX code in the browser (Browser me JSX code compile karne ke liye Babel load karta hai) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body> <!-- Contains the visible content of the page (Page ka visible content yahan hota hai) -->
+    <div id="root"></div>
+    <!-- The empty container where the React app will be rendered (Wo container jahan React app dikhega) -->
+
+    <script type="text/babel"> // Indicates that this script contains JSX/Babel code (Batata hai ki isme JSX code hai jo Babel compile karega)
+
+        // Defines a functional component named 'Header' that accepts 'props' (Ek function component 'Header' banaya jo 'props' leta hai)
+        function Header(props) {
+            // Returns an h1 element displaying 'Hello' and the 'name' prop value (h1 return karta hai jisme 'name' prop ki value hoti hai)
+            return <h1>Hello {props.name}</h1>;
+        }
+
+        // Defines the main 'App' component (Main 'App' component banaya)
+        function App() {
+            // 1. Creating an Array (Array banana)
+            // Syntax: const arrayName = [value1, value2, ...];
+            const names = ["Ramsingh", "Yadav", "Amit", "Rahul"];
+
+            // 2. Printing Loop in Console (Console me print karne ke liye loop)
+            // Using for loop
+            for (let i = 0; i < names.length; i++) {
+                console.log("For Loop:", names[i]);
+            }
+
+            return (
+                <div>
+                    {/* 3. Printing/Rendering Loop in React (React me screen par dikhane ke liye map loop) */}
+                    {/* We use .map() to convert array items into HTML/Components */}
+                    {
+                        names.map((item, index) => {
+                            // Returns a Header component for each name (Har naam ke liye Header component return karta hai)
+                            return <Header key={index} name={item} />;
+                        })
+                    }
+                </div>
+            )
+        }
+
+        // Creates a React root linked to the 'root' div (React root create kiya jo 'root' div se juda hai)
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+
+        // Renders the App component into the root (App component ko root ke andar dikhata hai)
+        root.render(<App />);
+    </script>
+</body>
+
+</html>

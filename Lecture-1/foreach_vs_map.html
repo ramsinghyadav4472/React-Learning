@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Component Demo</title>
+    <title>Props Demo</title>
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -12,17 +12,26 @@
 
 <body>
     <div id="root"></div>
-    <script type="text/babel"> //batata hai ki jsx iss file me ja raha hai 
-        function Header() {
-            return <h1>Hello</h1>;
+
+    <script type="text/babel">
+        const data = ["React", "Node", "MongoDB"]
+        function App() {
+            return (
+                <div>
+                    <h2>Using Map (work)</h2>
+                    {
+                        data.map((item, index) => {
+                            return <h1 key={index}>{item}</h1>
+                        })
+                    }
+                </div>
+            )
         }
+
+
         const root = ReactDOM.createRoot(document.getElementById("root"));
-        root.render(<Header />);
+        root.render(<App />);
     </script>
 </body>
 
 </html>
-
-<!-- component is a function that returns jsx
-element is a jsx and not reusable
-component is reusable -->

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reusable Card</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function Card(props) {
+            return (
+                <div style={{ border: "1px solid gray", padding: "10px", margin: "10px", backgroundColor: "#f0f0f0", borderRadius: "10px", boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", width: "200px", height: "200px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+                    <h1>{props.title}</h1>
+                    <p>{props.desc}</p>
+                    <p>{props.price}</p>
+                </div>
+            )
+        }
+
+        function App() {
+            return (
+                <div>
+                    <Card title="React" desc="Library for UI" price="100" />
+                    <Card title="Node" desc="Backend Runtime" price="200" />
+                    <Card title="MongoDB" desc="Database" price="300" />
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
+
+<!-- 
+Code Explanation (Line-by-Line):
+
+1. <!DOCTYPE html>: Defines the document type as HTML5. (HTML 5 ka document declare karta hai)
+2. <html lang="en">: Root element of the HTML page, language set to English. (HTML page ka root element, bhasa English set ki gayi hai)
+3. <head>: Container for metadata about the document. (Metadata ke liye container)
+4. <meta charset="UTF-8">: Sets character encoding to UTF-8 for special characters support. (Character encoding UTF-8 set karta hai)
+5. <meta name="viewport" ...>: Ensures proper rendering and touch zooming on mobile devices. (Mobile devices par sahi dikhne ke liye viewport set karta hai)
+6. <title>Reusable Card</title>: Sets the title of the web page shown in browser tab. (Browser tab ka title set karta hai)
+7. <script src="...">: Loads React core library. (React ki main library load karta hai)
+8. <script src="...">: Loads React DOM library to interact with the DOM. (DOM ke sath interact karne ke liye React DOM load karta hai)
+9. <script src="...">: Loads Babel to compile JSX code in the browser. (Browser me JSX code compile karne ke liye Babel load karta hai)
+10. <body>: Contains the visible content of the page. (Page ka visible content yahan hota hai)
+11. <div id="root"></div>: The empty container where the React app will be rendered. (Wo container jahan React app dikhega)
+12. <script type="text/babel">: Indicates that this script contains JSX/Babel code. (Batata hai ki isme JSX code hai jo Babel compile karega)
+13. function Card(props) {...}: Defines a reusable functional component named 'Card' that accepts 'props'. (Ek reusable function component 'Card' banaya jo 'props' leta hai)
+14. return (...): Returns the JSX to be rendered. (JSX return karta hai jo dikhaya jayega)
+15. <div style={{...}}>: A div with inline styles (background, border, shadow, flexbox for centering). (Div return karta hai inline CSS style ke saath)
+16. <h1>{props.title}</h1>: Displays the 'title' prop inside an h1 tag. ('title' prop ko h1 tag me dikhata hai)
+17. <p>{props.desc}</p>: Displays the 'desc' prop inside a p tag. ('desc' prop ko p tag me dikhata hai)
+18. <p>{props.price}</p>: Displays the 'price' prop inside a p tag. ('price' prop ko p tag me dikhata hai)
+19. function App() {...}: Defines the main 'App' component. (Main 'App' component banaya)
+20. <div>: Wrapper div for multiple elements. (Multiple elements ko wrap karne ke liye div)
+21. <Card title="React"... />: Reusing Card component with 'React' data. (Card component ko 'React' data ke saath reuse kiya)
+22. <Card title="Node"... />: Reusing Card component with 'Node' data. (Card component ko 'Node' data ke saath reuse kiya)
+23. <Card title="MongoDB"... />: Reusing Card component with 'MongoDB' data. (Card component ko 'MongoDB' data ke saath reuse kiya)
+24. const root = ReactDOM.createRoot(...): Creates a React root linked to the 'root' div. (React root create kiya jo 'root' div se juda hai)
+25. root.render(<App />): Renders the App component into the root. (App component ko root ke andar dikhata hai)
+-->
