@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Without JSX</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!--provide react library to create ui -->
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--to render ui/show inside the browser -->
+</head>
+
+<body>
+    <div id="root"></div> <!--tell the browser inject all the element in the root directory only -->
+    <script>
+        const element = React.createElement("h1", null, "Hello Student (No JSX)");   //(tag , attribute , content -- syntax),this was the original syntax to create ui using react 
+        const root = ReactDOM.createRoot(document.getElementById("root")); //to control the root 
+        root.render(element);
+    </script>
+</body>
+
+</html>
+<!-- Without jsx it just a assembley language  -->
