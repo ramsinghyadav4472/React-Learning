@@ -6,7 +6,7 @@ export default function ContactForm() {
     //name will store the current name typed in the input
     //setName() -> function used to update name -> when state update component
 
-    // const [message, setMessage] = useState("");
+    const [message, setMessage] = useState("");
 
     function handleKeyUp(e) {
         console.log("Key up: ", e.target.value);
@@ -34,12 +34,12 @@ export default function ContactForm() {
             <br />
             <br />
 
-            {/* <textarea
-        name=""
-        id=""
-        placeholder="Enter message"
-        onChange={(e) => setmessage(e.target.value)}
-      ></textarea> */}
+            {<textarea
+                name=""
+                id=""
+                placeholder="Enter message"
+                onChange={(e) => setMessage(e.target.value)}
+            ></textarea>}
 
             <button onClick={handleSubmit}>Send</button>
         </div>
