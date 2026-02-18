@@ -2,7 +2,8 @@
 // import ArrayObj from "./component/array-obj";
 // import Todo from "./component/todo";
 // import Timer from "./component/timer";
-import FetchApi from "./component/fetchapi";
+// import FetchApi from "./component/fetchapi";
+import WeatherFetchApi from "./component/fetchweatherapi";
 
 export default function App() {
   return (
